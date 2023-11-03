@@ -4,13 +4,13 @@ YAccess est une application web pour les étudiants ou enseignants d’Ynov afin
 L’utilisateur sera au courant du nombre de places du parking du campus mais aussi il permettra de proposer une service de trajet universitaire pour des utilisateurs qui n’auraient pas de véhicule.
 
 Outils :
-* VS Code
-* BDD (mysql)
-* API Maps
-* Vercel
+* VS Code -> IDE intuitif et déjà connu de tous les développeurs.
+* BDD (mysql) -> Base de données intuitive et maitrisée par les développeurs.
+* API Maps -> Outil intuitif pour l’affichage de la carte et des routes possibles.
+* Vercel -> Outil de déploiement très intuitif avec l’utilisation du langage de programmation choisit.
 
 Langage de programmation :
-* NextJS
+* NextJS ->  Framework de programmation client et serveur dynamique et intuitif développé par Vercel.
   *  react
   *  react-dom
   *  typescript

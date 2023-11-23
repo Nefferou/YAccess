@@ -1,8 +1,8 @@
 import { SHA256 as sha256 } from "crypto-js";
-import { prisma } from "../../../../../lib/prisma";
+import { prisma } from "../../../lib/prisma";
 import { Prisma } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
-import { validateEmail } from "../../../../../lib/validateEmail";
+import { validateEmail } from "../../../lib/validateEmail";
 
 export default async function handle(
   req: NextApiRequest,

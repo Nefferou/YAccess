@@ -1,5 +1,5 @@
 import { SHA256 as sha256 } from "crypto-js";
-import { prisma } from "../../../../../lib/prisma";
+import { prisma } from "../../../lib/prisma";
 import hashPassword from "./create";
 import { NextApiRequest, NextApiResponse } from "next";
 export default async function handle(

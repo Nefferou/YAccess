@@ -1,14 +1,21 @@
 import { getServerSession } from 'next-auth'
-import Image from 'next/image'
 import { authOptions } from './api/auth/[...nextauth]/route'
+import carpooling from "../public/carpooling.svg";
+import parking from "../public/parking.svg";
+import ChoiceCard from "../components/ChoiceCard/ChoiceCard";
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        {JSON.stringify(session, null, 2)}
+    <main className="h-screen px-8 pt-10 flex flex-col items-center gap-8">
+      <h1 className="text-3xl font-semibold tracking-wider">Home</h1>
+      <div className="flex flex-col gap-10">
+        <ChoiceCard title="Carpooling" svg={carpooling} onLeftImage={false} link="/carpooling"></ChoiceCard>
+        <ChoiceCard title="Parking" svg={parking} onLeftImage={true} link="/parking"></ChoiceCard>
+        <div>
+          {JSON.stringify(session, null, 2)}
+        </div>
       </div>
     </main>
   )

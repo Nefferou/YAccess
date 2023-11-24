@@ -12,6 +12,21 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      backgroundColor: {
+        'white-primary': '#FCFDFF',
+        'blue-primary': '#313FB6',
+      },
+      textColor: {
+        'white-primary': '#FCFDFF',
+        'blue-primary': '#313FB6',
+      },
+      boxShadow: {
+        choiceCardShadow: '0 0 6px 2px #DBE1E7',
+      },
+      fontFamily: {
+        'title': ['Montserrat', 'sans-serif'],
+        'body': ['Lato', 'sans-serif'],
+      }
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <footer className="text-white flex flex-col fixed bottom-2 w-full">
+        <footer className="text-white flex flex-col relative bottom-2 w-full mt-24">
             <div className="pl-8 flex flex-col gap-8">
                 <div className="location">
                     <h4 className="text-lg mb-2">Location</h4>

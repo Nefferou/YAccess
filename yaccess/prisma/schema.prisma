@@ -1,94 +1,102 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL_DEV")
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL_DEV")
+  shadowDatabaseUrl = env("DATABASE_URL_TEST")
+}
+
 model User {
-  Id          Int          @id
-  LastName    String
-  FirstName   String
+  Id          Int           @id
+  LastName    String?       @db.VarChar(255)
+  FirstName   String?       @db.VarChar(255)
   Age         Int?
-  Email       String
-  Photo       Bytes?
-  Password    String
-  PhoneNumber String?
-  Address     String?
-  BadgeList   String?
+  Email       String?       @db.VarChar(255)
+  Photo       Bytes?        @db.Blob
+  Password    String?       @db.VarChar(255)
+  PhoneNumber String?       @db.VarChar(255)
+  Address     String?       @db.VarChar(255)
+  BadgeList   String?       @db.Text
   Drivers     Driver[]
+  IsPassenger IsPassenger[]
   Ownerships  Ownership[]
   UserCars    UserCar[]
-  IsPassenger IsPassenger[]
 }
 
 model Badge {
-  Id          Int          @id
-  Title       String
-  Ownerships  Ownership[]
+  Id         Int         @id
+  Title      String?     @db.VarChar(255)
+  Ownerships Ownership[]
 }
 
 model Car {
-  Id          Int          @id
-  LicensePlate String
-  Brand       String
-  Model       String
+  Id            Int       @id
+  LicensePlate  String?   @db.VarChar(255)
+  Brand         String?   @db.VarChar(255)
+  Model         String?   @db.VarChar(255)
   NumberOfSeats Int?
-  UserCars    UserCar[]
+  UserCars      UserCar[]
 }
 
 model Driver {
-  Id            Int         @id
-  LicenseNumber String
-  UserId        Int
-  User          User        @relation(fields: [UserId], references: [Id])
+  Id            Int     @id
+  LicenseNumber String? @db.VarChar(255)
+  UserId        Int?
+  User          User?   @relation(fields: [UserId], references: [Id], onDelete: Restrict, onUpdate: Restrict, map: "Driver_ibfk_1")
   Trips         Trip[]
+
+  @@index([UserId], map: "UserId")
 }
 
 model Trip {
-  Id                Int             @id
-  DepartureLocation String
-  ArrivalLocation   String
-  AppointmentDate   DateTime?
-  Distance          Float?
-  FareAmount        Float?
-  CarbonEco         Float?
+  Id                Int           @id
+  DepartureLocation String?       @db.VarChar(255)
+  ArrivalLocation   String?       @db.VarChar(255)
+  AppointmentDate   DateTime?     @db.DateTime(0)
+  Distance          Decimal?      @db.Decimal(10, 2)
+  FareAmount        Decimal?      @db.Decimal(10, 2)
+  CarbonEco         Decimal?      @db.Decimal(10, 2)
   IsFinished        Boolean?
   IsPaid            Boolean?
-  Comment           String?
-  Rating            Float?
-  DriverId          Int
-  Driver            Driver          @relation(fields: [DriverId], references: [Id])
+  Comment           String?       @db.Text
+  Rating            Decimal?      @db.Decimal(3, 1)
+  DriverId          Int?
   IsPassenger       IsPassenger[]
+  Driver            Driver?       @relation(fields: [DriverId], references: [Id], onDelete: Restrict, onUpdate: Restrict, map: "Trip_ibfk_1")
+
+  @@index([DriverId], map: "DriverId")
 }
 
 model Ownership {
-  UserId    Int
-  BadgeId   Int
-  User      User  @relation(fields: [UserId], references: [Id])
-  Badge     Badge @relation(fields: [BadgeId], references: [Id])
+  UserId  Int
+  BadgeId Int
+  User    User  @relation(fields: [UserId], references: [Id], onUpdate: Restrict, map: "Ownership_ibfk_1")
+  Badge   Badge @relation(fields: [BadgeId], references: [Id], onUpdate: Restrict, map: "Ownership_ibfk_2")
+
   @@id([UserId, BadgeId])
+  @@index([BadgeId], map: "BadgeId")
 }
 
 model UserCar {
-  UserId    Int
-  CarId     Int
-  User      User  @relation(fields: [UserId], references: [Id])
-  Car       Car   @relation(fields: [CarId], references: [Id])
+  UserId Int
+  CarId  Int
+  User   User @relation(fields: [UserId], references: [Id], onUpdate: Restrict, map: "UserCar_ibfk_1")
+  Car    Car  @relation(fields: [CarId], references: [Id], onUpdate: Restrict, map: "UserCar_ibfk_2")
+
   @@id([UserId, CarId])
+  @@index([CarId], map: "CarId")
 }
 
 model IsPassenger {
-  UserId    Int
-  TripId    Int
-  Comment   String?
-  Rating    Float?
-  User      User   @relation(fields: [UserId], references: [Id])
-  Trip      Trip   @relation(fields: [TripId], references: [Id])
+  UserId  Int
+  TripId  Int
+  Comment String?  @db.Text
+  Rating  Decimal? @db.Decimal(3, 1)
+  User    User     @relation(fields: [UserId], references: [Id], onUpdate: Restrict, map: "IsPassenger_ibfk_1")
+  Trip    Trip     @relation(fields: [TripId], references: [Id], onUpdate: Restrict, map: "IsPassenger_ibfk_2")
+
   @@id([UserId, TripId])
+  @@index([TripId], map: "TripId")
 }

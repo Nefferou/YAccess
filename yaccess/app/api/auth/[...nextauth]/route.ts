@@ -20,66 +20,63 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials) {
-        // if (!credentials?.email || !credentials.password) {
-        //   return null
-        // }
+        if (!credentials?.email || !credentials.password) {
+          return null
+        }
 
-        // const user = await prisma.user.findFirst({
-        //   where: {
-        //     Email: credentials.email
-        //   }
-        // })
+        const user = await prisma.user.findFirst({
+          where: {
+            Email: credentials.email
+          }
+        })
 
-        // if (!user) {
-        //   return null
-        // }
+        if (!user) {
+          return null
+        }
 
-        // const isPasswordValid = await compare(
-        //   credentials.password,
-        //   user.Password
-        // )
+        const isPasswordValid = await compare(
+          credentials.password,
+          user.Password as string
+        )
 
-        // if (!isPasswordValid) {
-        //   return null
-        // }
+        if (!isPasswordValid) {
+          return null
+        }
 
-        // return {
-        //   id: user.Id + '',
-        //   email: user.Email,
-        //   name: user.FirstName + ' ' + user.LastName,
-        //   randomKey: 'Hey cool'
-        // }
-
-        const user = { id: '1', name: 'Carlos', email: 'carlos@ynov.com' }
-        return user
+        return {
+          id: user.Id + '',
+          email: user.Email,
+          name: user.FirstName + ' ' + user.LastName,
+          randomKey: 'Hey cool'
+        }
       }
     })
   ],
-  // callbacks: {
-  //   session: ({ session, token }) => {
-  //     console.log('Session Callback', { session, token })
-  //     return {
-  //       ...session,
-  //       user: {
-  //         ...session.user,
-  //         id: token.id,
-  //         randomKey: token.randomKey
-  //       }
-  //     }
-  //   },
-  //   jwt: ({ token, user }) => {
-  //     console.log('JWT Callback', { token, user })
-  //     if (user) {
-  //       const u = user as unknown as User
-  //       return {
-  //         ...token,
-  //         id: u.Id,
-  //         randomKey: 'Hey cool'
-  //       }
-  //     }
-  //     return token
-  //   }
-  // },
+  callbacks: {
+    session: ({ session, token }) => {
+      console.log('Session Callback', { session, token })
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          randomKey: token.randomKey
+        }
+      }
+    },
+    jwt: ({ token, user }) => {
+      console.log('JWT Callback', { token, user })
+      if (user) {
+        const u = user as unknown as any
+        return {
+          ...token,
+          id: u.Id,
+          randomKey: u.randomKey
+        }
+      }
+      return token
+    }
+  },
 }
 
 const handler = NextAuth(authOptions)

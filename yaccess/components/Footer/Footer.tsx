@@ -1,33 +1,42 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import instagram from '../../public/instagram.svg';
+import facebook from '../../public/facebook.svg';
+import linkedin from '../../public/linkedin.svg';
+import Image from "next/image";
 
 const Footer = () => {
     return (
         <footer className="text-white flex flex-col relative bottom-2 w-full mt-24">
-            <div className="pl-8 flex flex-col gap-8">
+            <div className="pl-8 flex flex-col gap-6">
                 <div className="location">
-                    <h4 className="text-lg mb-2">Location</h4>
-                    <p className="text-base leading-6">Sophia Ynov Campus</p>
-                    <p className="text-base leading-6">Place Sophie Laffitte, Immeuble AGORA,</p>
-                    <p className="text-base leading-6">06560 Valbonne</p>
+                    <h4 className="text-lg mb-1">Location</h4>
+                    <p className="text-xs leading-6">Sophia Ynov Campus</p>
+                    <p className="text-xs leading-6">Place Sophie Laffitte, Immeuble AGORA,</p>
+                    <p className="text-xs leading-6">06560 Valbonne</p>
                 </div>
                 <div className="help">
-                    <h4 className="text-lg mb-2">You need help ?</h4>
-                    <a href="/contact" className="text-blue-500 leading-6 hover:underline">Contact the customer service !</a>
+                    <h4 className="text-lg mb-1">You need help ?</h4>
+                    <a href="/contact" className="text-white-primary text-xs leading-6">Contact the <u className="hover:font-bold">customer service</u> !</a>
                 </div>
                 <div className="socials">
                     <h4 className="text-lg mb-2">Join our socials</h4>
                     <div className="icons flex gap-4">
-                        <a href="https://www.facebook.com" className="text-white text-2xl hover:text-blue-500"><FaFacebookF /></a>
-                        <a href="https://www.instagram.com" className="text-white text-2xl hover:text-blue-500"><FaInstagram /></a>
-                        <a href="https://www.linkedin.com" className="text-white text-2xl hover:text-blue-500"><FaLinkedinIn /></a>
+                        <a href="https://www.facebook.com" className="">
+                            <Image src={facebook} alt="Facebook icon"/>
+                        </a>
+                        <a href="https://www.instagram.com" className="">
+                            <Image src={instagram} alt="Instagram icon"/>
+                        </a>
+                        <a href="https://www.linkedin.com" className="">
+                            <Image src={linkedin} alt="Linkedin icon"/>
+                        </a>
                     </div>
                 </div>
                 <div className="privacy flex flex-col">
-                    <h4 className="text-lg mb-2">Privacy</h4>
-                    <a href="/terms" className="text-blue-500 leading-6 hover:underline">Terms and conditions</a>
-                    <a href="/legal" className="text-blue-500 leading-6 hover:underline">Legal Notice</a>
-                    <a href="/cookies" className="text-blue-500 leading-6 hover:underline">Cookies</a>
+                    <h4 className="text-lg mb-1">Privacy</h4>
+                    <a href="/terms" className="text-white-primary text-xs leading-6 hover:font-bold">Terms and conditions</a>
+                    <a href="/legal" className="text-white-primary text-xs leading-6 hover:font-bold">Legal Notice</a>
+                    <a href="/cookies" className="text-white-primary text-xs leading-6 hover:font-bold">Cookies</a>
                 </div>
             </div>
             <div className="text-xs mx-auto mt-8">

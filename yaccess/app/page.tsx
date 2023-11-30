@@ -1,8 +1,12 @@
+import { getServerSession } from 'next-auth'
+import { authOptions } from './api/auth/[...nextauth]/route'
 import carpooling from "../public/carpooling.svg";
 import parking from "../public/parking.svg";
 import ChoiceCard from "../components/ChoiceCard/ChoiceCard";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions)
+
   return (
     <main className="h-screen px-8 pt-20 flex flex-col items-center gap-8">
         <h1 className="text-3xl font-semibold tracking-wider">Home</h1>
@@ -10,6 +14,7 @@ export default function Home() {
             <ChoiceCard title="Carpooling" svg={carpooling} onLeftImage={false} link="/carpooling"></ChoiceCard>
             <ChoiceCard title="Parking" svg={parking} onLeftImage={true} link="/parking"></ChoiceCard>
         </div>
+      </div>
     </main>
   )
 }

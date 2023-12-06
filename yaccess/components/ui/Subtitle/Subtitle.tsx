@@ -1,8 +1,6 @@
 const Subtitle = (text:string) => {
     return (
-        <>
-            <h3 className="text-base">{text}</h3>
-        </>
+        <h4 className="text-base">{text}</h4>
     );
 };
 

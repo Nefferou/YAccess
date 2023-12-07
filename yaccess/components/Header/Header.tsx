@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Header = () => {
     return (
-        <header className="flex items-center justify-between p-4 bg-white text-blue-800 shadow-md fixed top-0 w-full">
+        <header className="flex items-center justify-between p-4 bg-white text-blue-800 shadow-md fixed top-0 w-full z-50">
             <div className="flex items-center">
                 <Image src={home} alt="Home icon"/>
             </div>

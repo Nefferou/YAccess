@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
 
         const user = await prisma.user.findFirst({
           where: {
-            Email: credentials.email
+            email: credentials.email
           }
         })
 
@@ -36,7 +36,7 @@ export const authOptions: NextAuthOptions = {
 
         const isPasswordValid = await compare(
           credentials.password,
-          user.Password as string
+          user.password as string
         )
 
         if (!isPasswordValid) {
@@ -44,9 +44,9 @@ export const authOptions: NextAuthOptions = {
         }
 
         return {
-          id: user.Id + '',
-          email: user.Email,
-          name: user.FirstName + ' ' + user.LastName,
+          id: user.id + '',
+          email: user.email,
+          name: user.firstName + ' ' + user.lastName,
           randomKey: 'Hey cool'
         }
       }

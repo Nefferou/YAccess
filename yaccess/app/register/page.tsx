@@ -37,11 +37,13 @@ const Register = () => {
                     icon={lock}
                     size="normal"
                     placeholder="Password"
+                    type="password"
                 />
                 <Input
                     icon={lock}
                     size="normal"
                     placeholder="Confirm password"
+                    type="password"
                 />
             </div>
             <div className="flex justify-center">

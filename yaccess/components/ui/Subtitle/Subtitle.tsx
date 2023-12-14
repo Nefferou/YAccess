@@ -10,7 +10,7 @@ const Subtitle = ({text, color = 'white-primary'}: SubTitleProps) => {
     }[color];
 
     return (
-        <h4 className={`text-2xl ${colorClass}`}>{text}</h4>
+        <h4 className={`text-2xl ${colorClass} font-bold tracking-wide`}>{text}</h4>
     );
 };
 

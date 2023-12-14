@@ -1,4 +1,8 @@
-const Subtitle = (text:string) => {
+type SubTitleProps = {
+    text: string;
+}
+
+const Subtitle = ({text}:SubTitleProps) => {
     return (
         <h4 className="text-base">{text}</h4>
     );

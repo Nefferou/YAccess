@@ -22,6 +22,7 @@ const config: Config = {
       },
       boxShadow: {
         choiceCardShadow: '0 0 6px 2px #DBE1E7',
+        inputShadow: '0 0 6px 2px #2259C5',
       },
       fontFamily: {
         'title': ['Montserrat', 'sans-serif'],

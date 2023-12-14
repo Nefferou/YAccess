@@ -1,6 +1,8 @@
+"use client";
+
 type ButtonProps = {
     text: string;
-    type?: 'primary' | 'secondary' | 'tertiary';
+    type?: 'primary' | 'secondary';
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     onClick?: () => void;

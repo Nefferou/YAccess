@@ -21,7 +21,7 @@ import Input from "../components/ui/Input/Input";
 const Input = ({ icon, size, placeholder }) => {
     const widthClass = size === 'small' ? 'w-1/2' : 'w-full';
     return (
-        <div className={`flex items-center rounded h-12 ${widthClass} p-2 bg-white-primary shadow-inputShadow`}>
+        <div className={`flex items-center rounded-2xl h-12 ${widthClass} p-2 bg-white-primary shadow-inputShadow`}>
             {icon && (
                 <div className="mr-2 flex-shrink-0">
                     <Image src={icon} alt="" width={20} height={20} />

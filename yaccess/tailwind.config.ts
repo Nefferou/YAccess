@@ -11,6 +11,7 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-to-r-from-purple-to-deep-purple': 'linear-gradient(180deg, #414FCC 38.02%, rgba(34, 89, 197, 0.61) 100%)',
       },
       backgroundColor: {
         'white-primary': '#FCFDFF',
@@ -23,6 +24,7 @@ const config: Config = {
       },
       boxShadow: {
         choiceCardShadow: '0 0 6px 2px #DBE1E7',
+        inputShadow: '0 0 6px 1px #2259C5',
         purpleButtonShadow: '1px 0px 4px 2px #d296ff',
         redButtonShadow: '1px 0px 4px 2px #ff8484',
         greyButtonShadow: '1px 0px 4px 2px #c6c5c5',

@@ -15,7 +15,7 @@ const Login = () => {
                     <Image src={rocket} alt="rocket" width={200} height={200}/>
                 </div>
             </div>
-            <div className="flex flex-wrap gap-8 mt-4 p-12">
+            <div className="flex flex-wrap gap-8 mt-4 px-20 py-8">
                 <Input
                     icon={email}
                     size="normal"

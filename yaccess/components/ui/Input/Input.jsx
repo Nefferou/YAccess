@@ -16,13 +16,14 @@ import Input from "../components/ui/Input/Input";
     size="small"
     placeholder="Search..."
     type="password"
+    text="example@example.com"
 />
  */
 
-const Input = ({ icon, size, placeholder, type = "text" }) => {
+const Input = ({ icon, size, placeholder, type = "text", text =""}) => {
     const widthClass = size === 'small' ? 'w-1/2' : 'w-full';
     return (
-        <div className={`flex items-center rounded-2xl h-12 ${widthClass} p-2 bg-white-primary shadow-inputShadow`}>
+        <div className={`flex items-center rounded-xl h-12 ${widthClass} p-2 bg-white-primary shadow-inputShadow`}>
             {icon && (
                 <div className="mr-2 flex-shrink-0">
                     <Image src={icon} alt="" width={20} height={20} />
@@ -31,6 +32,7 @@ const Input = ({ icon, size, placeholder, type = "text" }) => {
             <input
                 type={type}
                 placeholder={placeholder}
+                value={text}
                 className="flex-1 bg-transparent outline-none text-black"
             />
         </div>
@@ -42,6 +44,7 @@ Input.propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'normal']),
     placeholder: PropTypes.string,
     type: PropTypes.string,
+    text: PropTypes.string,
 };
 
 export default Input;

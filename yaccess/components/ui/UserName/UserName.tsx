@@ -4,7 +4,7 @@ type UserNameProps = {
 
 const UserName = ({username}:UserNameProps) => {
     return (
-        <h3 className="text-lg">{username}</h3>
+        <h3 className="text-lg text-white-primary">{username}</h3>
     );
 };
 

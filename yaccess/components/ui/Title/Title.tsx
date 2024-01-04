@@ -13,8 +13,8 @@ const Title = ({ text, subtitle, placement = 'left' }: TitleProps) => {
 
     return (
         <>
-            <h1 className={`text-3xl font-semibold ${placementClass} tracking-wider`}>{text}</h1>
-            {subtitle && <h2 className={`text-xs ${placementClass}`}>{subtitle}</h2>}
+            <h1 className={`text-3xl font-semibold ${placementClass} tracking-wider text-white-primary`}>{text}</h1>
+            {subtitle && <h2 className={`text-xs ${placementClass} text-white-primary`}>{subtitle}</h2>}
         </>
     );
 };

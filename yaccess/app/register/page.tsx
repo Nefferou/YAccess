@@ -8,6 +8,7 @@ import phone from "../../public/phone-profile.svg";
 import lock from "../../public/lock.svg";
 import name from "../../public/full-name.svg";
 import Button from "../../components/ui/Button/Button";
+import Link from "next/link";
 const Register = () => {
     return (
         <div className="h-screen bg-white-primary">
@@ -47,7 +48,9 @@ const Register = () => {
                 />
             </div>
             <div className="flex justify-center">
-                <Button text="Next step"></Button>
+                <Link href="/login">
+                    <Button text="Next step"></Button>
+                </Link>
             </div>
         </div>
     );

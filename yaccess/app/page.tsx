@@ -4,10 +4,11 @@ import carpooling from "../public/carpooling.svg";
 import parking from "../public/parking.svg";
 import ChoiceCard from "../components/ChoiceCard/ChoiceCard";
 import Title from "../components/ui/Title/Title";
+import DriverComponent from '../components/DriverComponent/DriverComponent';
+import Badge from '../models/Badge';
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
-
   return (
     <main className="h-screen px-8 pt-20 flex flex-col items-center gap-8">
         <Title text="Home"></Title>

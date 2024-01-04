@@ -10,6 +10,7 @@ CREATE TABLE `User` (
     `PhoneNumber` VARCHAR(255) NULL,
     `Address` VARCHAR(255) NULL,
     `BadgeList` TEXT NULL,
+    `Bio` TEXT NULL,
 
     PRIMARY KEY (`Id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

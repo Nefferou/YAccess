@@ -9,4 +9,5 @@ export type User = {
     PhoneNumber: string | null;
     Address: string | null;
     BadgeList: string | null;
+    Bio: string | null;
 };

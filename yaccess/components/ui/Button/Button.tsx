@@ -5,10 +5,10 @@ type ButtonProps = {
     type?: 'primary' | 'secondary';
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
-    onClick?: () => void;
+    handleOnClick?: () => void;
 }
 
-const Button = ({ text, type = 'primary', size = 'medium', disabled = false, onClick }: ButtonProps) => {
+const Button = ({ text, type = 'primary', size = 'medium', disabled = false, handleOnClick }: ButtonProps) => {
     let baseClasses = 'px-4 py-2 rounded-2xl focus:outline-none text-base text-center';
 
     let typeClasses = '';
@@ -39,7 +39,7 @@ const Button = ({ text, type = 'primary', size = 'medium', disabled = false, onC
     return (
         <button
             className={`${baseClasses} ${typeClasses} ${sizeClasses}`}
-            onClick={!disabled ? onClick : undefined}
+            onClick={!disabled ? handleOnClick : undefined}
             disabled={disabled}
             style={style}
         >

@@ -3,7 +3,11 @@ import Subtitle from "../../Subtitle/Subtitle";
 import Button from "../../Button/Button";
 import {useEffect} from "react";
 
-const ModalDecline = () => {
+interface ModalDeclineProps {
+    onClose: () => void;
+}
+
+const ModalDecline = ({onClose}: ModalDeclineProps) => {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
 
@@ -11,6 +15,7 @@ const ModalDecline = () => {
             document.body.style.overflow = 'unset';
         };
     }, []);
+
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center">
@@ -22,7 +27,7 @@ const ModalDecline = () => {
                 </div>
                 <div className="flex gap-4 mt-4">
                     <Button text="Yes" size="medium" />
-                    <Button text="No" type="secondary" size="medium" />
+                    <Button text="No" type="secondary" size="medium" onClick={onClose}/>
                 </div>
             </div>
         </div>

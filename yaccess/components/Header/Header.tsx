@@ -1,8 +1,8 @@
 import React from 'react';
-import profile from '../../public/profile.svg'
+import profil from '../../public/profile.svg'
 import home from '../../public/home.svg'
 import Image from "next/image";
-
+import Link from 'next/link';
 const Header = () => {
     return (
         <header className="flex items-center justify-between p-4 bg-white text-blue-800 shadow-md fixed top-0 w-full z-50">
@@ -11,7 +11,9 @@ const Header = () => {
             </div>
             <div className="text-xl font-bold text-blue-800">Yaccess</div>
             <div className="flex items-center">
-                <Image src={profile} alt="Profile icon"/>
+                <Link href="/profile">
+                    <Image src={profil} alt="Profile icon"/>
+                </Link>
             </div>
         </header>
     );

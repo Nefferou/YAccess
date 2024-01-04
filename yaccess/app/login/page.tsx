@@ -6,6 +6,7 @@ import Image from "next/image";
 import email from "../../public/email-logo.svg";
 import lock from "../../public/lock.svg";
 import Button from "../../components/ui/Button/Button";
+import Link from "next/link";
 const Login = () => {
     return (
         <div className="h-screen bg-white-primary">
@@ -29,8 +30,11 @@ const Login = () => {
                 />
             </div>
             <div className="flex justify-center">
-                <Button text="Next step"></Button>
+                <Link href="/">
+                    <Button text="Next step"></Button>
+                </Link>
             </div>
+            <a href='/register' className="flex justify-center text-blue-primary">Register your self</a>
         </div>
     );
 };

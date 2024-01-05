@@ -1,42 +1,29 @@
-import { PrismaClient } from "@prisma/client";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest } from "next/server";
 
-const prisma = new PrismaClient();
+type Params = {
+  driverId: string;
+};
 
-export async function GET(req: NextApiRequest, { params } : { params : { driverId : string} }) {
+export async function GET(params: Params) {
+  console.log("GET driverId", params);
   const { driverId } = params;
-  console.log("test");
-  console.log(driverId);
-  /*if (!req.query.driverId) {
-    // Si 'driverId' n'existe pas, renvoyez une erreur 400 (Bad Request)
-    return res.status(400).json({ message: "Driver ID is required" });
+
+  if (!driverId || isNaN(Number(driverId))) {
+    return new Response("Invalid driverId", { status: 400 });
   }
 
-  const driverId = req.query.driverId as string;
-
-  console.log(driverId);
+  // Your database query using Prisma here if needed
+  /*
   const driverWithUser = await prisma.driver.findUnique({
     where: {
-      Id: parseInt(driverId, 10), // Convertissez l'ID en nombre entier
-    },
-    include: {
-      User: {
-        select: {
-          lastName: true,
-          firstName: true,
-          photo: true,
-          badgeList: true,
-          Bio: true,
-        },
-      },
+      userId: parseInt(driverId, 10),
     },
   });
 
   if (!driverWithUser) {
-    // Si le conducteur n'est pas trouvé, renvoyez une réponse 404 (Non trouvé)
-    return res.status(404).json({ message: "Driver not found" });
+    return res.status(404).json({ error: "Driver not found" });
   }
+  */
 
-  // Si le conducteur est trouvé, renvoyez ses informations, y compris les informations de l'utilisateur
-  return res.status(200).json(driverWithUser);*/
+  return new Response("OK", { status: 200 });
 }

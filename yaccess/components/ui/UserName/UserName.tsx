@@ -1,10 +1,16 @@
 type UserNameProps = {
     username: string;
+    color?: 'white-primary' | 'blue-primary';
 }
 
-const UserName = ({username}:UserNameProps) => {
+const UserName = ({username, color= 'white-primary'}:UserNameProps) => {
+    const colorClass = {
+        'white-primary': 'text-white-primary',
+        'blue-primary': 'text-blue-primary',
+    }[color];
+
     return (
-        <h3 className="text-lg text-white-primary">{username}</h3>
+        <h3 className={`text-sm ${colorClass}`}>{username}</h3>
     );
 };
 

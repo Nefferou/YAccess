@@ -25,7 +25,7 @@ const Login = () => {
                 <Input
                     icon={lock}
                     size="normal"
-                    placeholder="Password"
+                      placeholder="Password"
                     type="password"
                 />
             </div>

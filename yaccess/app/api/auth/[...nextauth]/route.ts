@@ -2,7 +2,6 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import NextAuth, { type NextAuthOptions } from 'next-auth'
 import { prisma } from '../../../../lib/prisma'
 import { compare } from 'bcrypt'
-import { User } from '../../../../models/User'
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -53,6 +52,14 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
+    signIn: async ({ user, account, profile, email, credentials }) => {
+      console.log('Sign In Callback', { user, account, profile, email, credentials })
+      return true
+    },
+    redirect: async ({ url }) => {
+      console.log('Redirect Callback', { url });
+      return url;
+    },
     session: ({ session, token }) => {
       console.log('Session Callback', { session, token })
       return {

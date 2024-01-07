@@ -38,10 +38,10 @@ const Page = () => {
                     <Trip label="Cannes to Sophia" date="15/12/2022"/>
                 </div>
                 <div className="flex flex-col items-center gap-8 pt-6">
-                    <Link href="/login">
+                    <Link href="/auth/signin">
                         <Button text="Logout" size="large" />
                     </Link>
-                    <Link href="/login">
+                    <Link href="/auth/signin">
                         <Button text="Delete account" size="large" type="secondary" />
                     </Link>
                 </div>

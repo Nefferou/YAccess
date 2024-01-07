@@ -1,4 +1,3 @@
-import React from 'react';
 import Title from "../../components/ui/Title/Title";
 import Input from "../../components/ui/Input/Input";
 import rocket from "../../public/rocket.svg";
@@ -9,6 +8,7 @@ import lock from "../../public/lock.svg";
 import name from "../../public/full-name.svg";
 import Button from "../../components/ui/Button/Button";
 import Link from "next/link";
+
 const Register = () => {
     return (
         <div className="h-screen bg-white-primary">

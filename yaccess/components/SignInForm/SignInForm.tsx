@@ -33,6 +33,7 @@ const SignInForm = () => {
             })
 
             if (!signInResponse || signInResponse.ok !== true) {
+                console.log(signInResponse);
                 setMessage("Invalid credentials");
             } else {
                 router.refresh();
@@ -41,8 +42,6 @@ const SignInForm = () => {
         } catch (err) {
             console.log(err);
         }
-
-        setMessage(message);
     };
 
     useEffect(() => {
@@ -68,7 +67,7 @@ const SignInForm = () => {
                     value={mail}
                     name="email"
                     placeholder="Email"
-                    error={message !== ''}
+                    error={message === "Invalid credentials" ? true : false}
                     onChange={(e) => setMail(e.target.value)}
                 />
                 <Input
@@ -78,18 +77,21 @@ const SignInForm = () => {
                     value={password}
                     name="password"
                     placeholder="Password"
-                    error={message !== ''}
+                    error={message === "Invalid credentials" ? true : false}
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className="flex justify-center">
                     <Button text="Sign in" onClick={handleSubmit} />
                 </div>
                 {
-                    message !== '' &&
-                    <div className="flex justify-center text-black">
-                        <p>{message}</p>
-                    </div>
-
+                    message === "Invalid credentials" ?
+                        <div className="flex justify-center text-red-500 text-xs font-semibold">
+                            <p>{message}</p>
+                        </div>
+                        :
+                        <div className="flex justify-center text-black text-xs font-semibold">
+                            <p>{message}</p>
+                        </div>
                 }
                 <div>
                     <a href='/auth/signup' className="flex justify-center text-blue-primary">Register your self</a>

@@ -26,9 +26,9 @@ interface InputProps {
     value: string | number
     name: string
     placeholder: string
-    error: boolean
+    error?: boolean
     disabled?: boolean
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input = ({ type, icon, size, value, name, placeholder, error, disabled, onChange }: InputProps) => {

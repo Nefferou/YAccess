@@ -16,6 +16,9 @@ export default async function Home() {
         <div className="flex flex-col gap-10">
             <ChoiceCard title="Carpooling" svg={carpooling} onLeftImage={false} link="/carpooling"></ChoiceCard>
             <ChoiceCard title="Parking" svg={parking} onLeftImage={true} link="/parking"></ChoiceCard>
+            {
+                session && session.user && session.user.name && <h1 className="text-2xl font-semibold tracking-wider">Welcome {session.user.name}</h1>
+            }
         </div>
     </main>
   )

@@ -1,15 +1,41 @@
-import React from 'react';
+"use client"
+import React, {useState} from 'react';
 import Image from "next/image";
 import labelIcon from '../../../public/map-pin-front-color.svg';
 import dateIcon from '../../../public/calender-front-color.svg';
 import Button from "../Button/Button";
+import ModalDecline from "../Modals/ModalDecline/ModalDecline";
+import ModalModifyTrip from "../Modals/ModalModifyTrip/ModalModifyTrip";
+import ModalDeleteAccount from "../Modals/ModalDeleteAccount/ModalDeleteAccount";
 
 type Props = {
     label: string;
     date: string;
+    modal: string;
 };
 
-const Trip: React.FC<Props> = ({ label, date }) => {
+const Trip: React.FC<Props> = ({ label, date, modal }) => {
+    const [isModalVisible, setModalVisible] = useState(false);
+    let modalToDisplay;
+
+    switch(modal) {
+        case 'decline':
+            modalToDisplay = isModalVisible && <ModalDecline onClose={() => setModalVisible(false)} />;
+            break;
+        case 'modify':
+            modalToDisplay = isModalVisible && <ModalModifyTrip onClose={() => setModalVisible(false)} />;
+            break;
+        case 'delete':
+            modalToDisplay = isModalVisible && <ModalDeleteAccount onClose={() => setModalVisible(false)} />;
+            break;
+        default:
+            modalToDisplay = null;
+    }
+
+    const handleButtonClick = () => {
+        setModalVisible(true);
+    }
+
     return (
         <div className="bg-white rounded-xl shadow-md p-4 max-w-sm w-full mx-auto">
             <div className="flex justify-between"> {/* Parent container */}
@@ -24,8 +50,9 @@ const Trip: React.FC<Props> = ({ label, date }) => {
                     </div>
                 </div>
                 <div className="flex flex-col justify-center"> {/* Right column */}
-                    <Button text={"Modify"} size={"small"} />
+                    <Button text={"Modify"} size={"small"} onClick={handleButtonClick}/>
                 </div>
+                {modalToDisplay}
             </div>
         </div>
     );
